@@ -11,20 +11,18 @@ namespace quiz.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class TBL_ADMIN
     {
+        public TBL_ADMIN()
+        {
+            this.tbl_categroy = new HashSet<tbl_categroy>();
+        }
+    
         public int AD_ID { get; set; }
-
-        [Display(Name="Admin Name")]
-        [Required(ErrorMessage="*")]
-
         public string AD_NAME { get; set; }
-
-        [Display(Name = "Password")]
-        [Required(ErrorMessage = "*")]
-
         public string AD_PASSWORD { get; set; }
+    
+        public virtual ICollection<tbl_categroy> tbl_categroy { get; set; }
     }
 }

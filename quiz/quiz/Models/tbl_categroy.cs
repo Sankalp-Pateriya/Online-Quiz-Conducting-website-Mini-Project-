@@ -12,17 +12,19 @@ namespace quiz.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TBL_QUESTIONS
+    public partial class tbl_categroy
     {
-        public int QUESTION_ID { get; set; }
-        public string Q_TEXT { get; set; }
-        public string OPA { get; set; }
-        public string OPB { get; set; }
-        public string OPC { get; set; }
-        public string OPD { get; set; }
-        public string COP { get; set; }
-        public Nullable<int> q_fk_catid { get; set; }
+        public tbl_categroy()
+        {
+            this.TBL_QUESTIONS = new HashSet<TBL_QUESTIONS>();
+        }
     
-        public virtual tbl_categroy tbl_categroy { get; set; }
+        public int cat_id { get; set; }
+        public string cat_name { get; set; }
+        public Nullable<int> cat_fk_adid { get; set; }
+        public string cat_encyptedstring { get; set; }
+    
+        public virtual TBL_ADMIN TBL_ADMIN { get; set; }
+        public virtual ICollection<TBL_QUESTIONS> TBL_QUESTIONS { get; set; }
     }
 }

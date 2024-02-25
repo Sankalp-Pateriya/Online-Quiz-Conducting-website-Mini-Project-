@@ -29,5 +29,6 @@ namespace quiz.Models
         public DbSet<TBL_QUESTIONS> TBL_QUESTIONS { get; set; }
         public DbSet<TBL_SETEXAM> TBL_SETEXAM { get; set; }
         public DbSet<TBL_STUDENT> TBL_STUDENT { get; set; }
+        public DbSet<tbl_categroy> tbl_categroy { get; set; }
     }
 }

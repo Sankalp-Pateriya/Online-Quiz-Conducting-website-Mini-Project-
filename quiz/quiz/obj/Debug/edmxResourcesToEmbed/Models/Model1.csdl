@@ -7,6 +7,7 @@
     <Property Name="AD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AD_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="AD_PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_categroy" Relationship="DBQUIZModel.FK__tbl_categ__cat_f__36B12243" FromRole="TBL_ADMIN" ToRole="tbl_categroy" />
   </EntityType>
   <EntityType Name="TBL_QUESTIONS">
     <Key>
@@ -19,6 +20,8 @@
     <Property Name="OPC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="OPD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="COP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="q_fk_catid" Type="Int32" />
+    <NavigationProperty Name="tbl_categroy" Relationship="DBQUIZModel.FK__TBL_QUEST__q_fk___37A5467C" FromRole="TBL_QUESTIONS" ToRole="tbl_categroy" />
   </EntityType>
   <EntityType Name="TBL_SETEXAM">
     <Key>
@@ -62,5 +65,49 @@
       <End Role="TBL_STUDENT" EntitySet="TBL_STUDENT" />
       <End Role="TBL_SETEXAM" EntitySet="TBL_SETEXAM" />
     </AssociationSet>
+    <EntitySet Name="tbl_categroy" EntityType="DBQUIZModel.tbl_categroy" />
+    <AssociationSet Name="FK__tbl_categ__cat_f__36B12243" Association="DBQUIZModel.FK__tbl_categ__cat_f__36B12243">
+      <End Role="TBL_ADMIN" EntitySet="TBL_ADMIN" />
+      <End Role="tbl_categroy" EntitySet="tbl_categroy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBL_QUEST__q_fk___37A5467C" Association="DBQUIZModel.FK__TBL_QUEST__q_fk___37A5467C">
+      <End Role="tbl_categroy" EntitySet="tbl_categroy" />
+      <End Role="TBL_QUESTIONS" EntitySet="TBL_QUESTIONS" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="tbl_categroy">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cat_fk_adid" Type="Int32" />
+    <NavigationProperty Name="TBL_ADMIN" Relationship="DBQUIZModel.FK__tbl_categ__cat_f__36B12243" FromRole="tbl_categroy" ToRole="TBL_ADMIN" />
+    <NavigationProperty Name="TBL_QUESTIONS" Relationship="DBQUIZModel.FK__TBL_QUEST__q_fk___37A5467C" FromRole="tbl_categroy" ToRole="TBL_QUESTIONS" />
+    <Property Name="cat_encyptedstring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__tbl_categ__cat_f__36B12243">
+    <End Type="DBQUIZModel.TBL_ADMIN" Role="TBL_ADMIN" Multiplicity="0..1" />
+    <End Type="DBQUIZModel.tbl_categroy" Role="tbl_categroy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_ADMIN">
+        <PropertyRef Name="AD_ID" />
+      </Principal>
+      <Dependent Role="tbl_categroy">
+        <PropertyRef Name="cat_fk_adid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBL_QUEST__q_fk___37A5467C">
+    <End Type="DBQUIZModel.tbl_categroy" Role="tbl_categroy" Multiplicity="0..1" />
+    <End Type="DBQUIZModel.TBL_QUESTIONS" Role="TBL_QUESTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_categroy">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="TBL_QUESTIONS">
+        <PropertyRef Name="q_fk_catid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

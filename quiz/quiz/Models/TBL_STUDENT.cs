@@ -11,7 +11,6 @@ namespace quiz.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class TBL_STUDENT
     {
@@ -21,17 +20,8 @@ namespace quiz.Models
         }
     
         public int S_ID { get; set; }
-
-        [Display(Name = "Name")]
-        [Required(ErrorMessage = "*")]
         public string S_NAME { get; set; }
-
-        [Display(Name = "Passwor")]
-        [Required(ErrorMessage = "*")]
         public string S_PASSWORD { get; set; }
-
-        [Display(Name = "Image")]
-        
         public string S_IMAGE { get; set; }
     
         public virtual ICollection<TBL_SETEXAM> TBL_SETEXAM { get; set; }

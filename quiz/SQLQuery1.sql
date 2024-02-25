@@ -44,3 +44,30 @@ EXAM_STD_SCORE INT
 
 
 
+----------------------------------------------
+
+--DAY2------------------------------------------- 
+select * from sys.tables
+
+
+
+create table tbl_categroy
+(
+cat_id int identity primary key,
+cat_name nvarchar(50) not null,
+cat_fk_adid int foreign key references TBL_ADMIN(ad_id)
+)
+
+alter table TBL_QUESTIONS
+add q_fk_catid int foreign key references tbl_categroy(cat_id)
+
+
+select * from tbl_categroy
+
+select * from TBL_QUESTIONS
+
+
+insert into TBL_ADMIN
+values('root','admin')
+
+select * from TBL_ADMIN

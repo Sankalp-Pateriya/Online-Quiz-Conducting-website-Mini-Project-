@@ -13,6 +13,7 @@
     <EntitySetMapping Name="TBL_QUESTIONS">
       <EntityTypeMapping TypeName="DBQUIZModel.TBL_QUESTIONS">
         <MappingFragment StoreEntitySet="TBL_QUESTIONS">
+          <ScalarProperty Name="q_fk_catid" ColumnName="q_fk_catid" />
           <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
           <ScalarProperty Name="Q_TEXT" ColumnName="Q_TEXT" />
           <ScalarProperty Name="OPA" ColumnName="OPA" />
@@ -41,6 +42,16 @@
           <ScalarProperty Name="S_NAME" ColumnName="S_NAME" />
           <ScalarProperty Name="S_PASSWORD" ColumnName="S_PASSWORD" />
           <ScalarProperty Name="S_IMAGE" ColumnName="S_IMAGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_categroy">
+      <EntityTypeMapping TypeName="DBQUIZModel.tbl_categroy">
+        <MappingFragment StoreEntitySet="tbl_categroy">
+          <ScalarProperty Name="cat_encyptedstring" ColumnName="cat_encyptedstring" />
+          <ScalarProperty Name="cat_fk_adid" ColumnName="cat_fk_adid" />
+          <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
